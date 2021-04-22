@@ -1,0 +1,57 @@
+﻿<Window x:Class="HuffmanProject.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:HuffmanProject"
+        mc:Ignorable="d"
+        Title="Huffman Project" Height="450" Width="800" MinHeight="300" MinWidth="770">
+    <Grid Name="MainGrid" Background="#e7e9f8">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="3*"/>
+            <ColumnDefinition MinWidth="150" Width="2*"/>
+            <ColumnDefinition Width="470"/>
+            <ColumnDefinition MinWidth="150" Width="2*"/>
+            <ColumnDefinition Width="3*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+
+        <Menu Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="5">
+            <MenuItem Header="Файл" Click="MenuBtn_Click"/>
+            <MenuItem Header="Анализировать" Click="MenuBtn_Click"/>
+            <MenuItem Header="Закодировать" Click="MenuBtn_Click"/>
+            <MenuItem Header="Раскодировать" Click="MenuBtn_Click"/>
+        </Menu>
+
+        <ScrollViewer Grid.Row="1" Grid.Column="1" Margin="5" 
+                      HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
+            <ListBox Background="AliceBlue" x:Name="LbFreq" 
+                     MouseRightButtonDown="SidePanel_MouseDoubleClick" MouseDoubleClick="SidePanel_MouseDoubleClick"/>
+        </ScrollViewer>
+        <ScrollViewer Grid.Row="2" Grid.Column="1" Margin="5" CanContentScroll="True"
+                      HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
+            <ListBox Background="AliceBlue" x:Name="LbEncode" 
+                     MouseRightButtonDown="SidePanel_MouseDoubleClick" MouseDoubleClick="SidePanel_MouseDoubleClick"/>
+        </ScrollViewer>
+        
+        <ScrollViewer Grid.Row="1" Grid.Column="2" Margin="5" Grid.RowSpan="2" x:Name="SwMain" 
+                      VerticalScrollBarVisibility="Auto">
+            <TextBlock Background="AliceBlue" x:Name="TbMain" 
+                           TextWrapping="WrapWithOverflow" Width="470" 
+                       Padding="5" AllowDrop="True" Drop="TbCyph_Drop"/>
+        </ScrollViewer>
+
+        <ScrollViewer Grid.Row="1" Grid.Column="3" Margin="5" 
+                      HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
+            <TextBlock Background="AliceBlue" x:Name="TbCyph" MouseDown="SidePanel_MouseDoubleClick"/>
+        </ScrollViewer>
+        <ScrollViewer Grid.Row="2" Grid.Column="3" Margin="5" 
+                      HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
+            <TextBlock Background="AliceBlue" x:Name="TbDecyph" MouseDown="SidePanel_MouseDoubleClick"/>
+        </ScrollViewer>
+    </Grid>
+</Window>
